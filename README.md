@@ -17,6 +17,7 @@
 | **教你怎么开周报** | **[`WEEKLY.md`](WEEKLY.md)** —— 复盘：记什么 · 为什么这么记 |
 | **怎么验"我照做了"** | **[`CRITERIA.md`](CRITERIA.md)** —— 每条结论 → 一条能回答的判据 |
 | **装不上 / 装了没反应** | **[`INSTALL-PITFALLS.md`](INSTALL-PITFALLS.md)** —— 两类死法（☠️ 宿主起不来 · 😶 静默不激活）+ 机械检查 |
+| **开源前有没有漏隐私** | **[`HISTORY-AUDIT.md`](HISTORY-AUDIT.md)** —— 公开仓**历史**审计（★ **HEAD 干净 ≠ 历史干净**）|
 
 > ⚠️ **一句话说清三者关系**：
 > **`WHY.md` 说"为什么"** · **`BUILD.md`/`RUN.md` 说"怎么做"** · **`CRITERIA.md` 说"怎么验"**。
