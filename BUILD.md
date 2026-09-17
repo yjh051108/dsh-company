@@ -23,6 +23,13 @@
 ## 第 1 步：装（三步）
 
 ```bash
+# ⓪ ★ 前提 2：profile 必须是【完整的】—— 这一步最容易漏，漏了会报一句看不懂的错
+#    ⚠️ 裸 profile 会停在：Error: dsh: 1 entry did not activate
+#                          @dsh-external/dsh-org-panel: pending (waiting for service: webServer)
+#    ⇒ ★ 那是**缺 `@deepseek-ai/dsh-web-app`**（它提供 `webServer` 服务），**不是插件坏了**。
+#    ⇒ 正解：用 `--from-default-profile` 建一个完整 profile：
+dsh --profile web --from-default-profile default          # 若已有 web profile，可换名新建
+
 # ① 装插件本体（让底座认识这个插件）
 #    ⚠️ 前提：pnpm 必须在 PATH 上（dsh plugin 会把参数转发给 pnpm）
 dsh plugin --profile web add "<你 clone 下来的>/plugin"     # ★ 绝对路径，不带 file:
@@ -35,6 +42,15 @@ node node_modules/@dsh-external/dsh-teamkit/tools/install-teamkit.mjs --check
 
 # ③ 新建一个会话 ⇒ **预设选 `omc`**（GUI 里选，或把 agent-presets.default 设成 omc）
 ```
+
+> ⛔ **别用下面这条去补 `webServer`**（我们撞过）：
+> ```bash
+> dsh plugin --profile web add "@deepseek-ai/dsh-web-app"    # ⇒ ERR_PNPM_FETCH_404
+> ```
+> **原因**：rc 版依赖**不在 npm registry 上** ⇒ 拿不到。**唯一正解是 ⓪ 那条**（建完整 profile）。
+>
+> ★ **这条前置的完整说明在面板仓**：[`dsh-org-panel` README](https://github.com/yjh051108/dsh-org-panel#readme)
+> （**同一事实只写一处** —— 那边有完整四条，这里只给判据与正解）。
 
 ### 1.1 装完你会看到什么（**真跑出来的原文**）
 
