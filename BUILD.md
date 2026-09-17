@@ -23,7 +23,7 @@
 ## 第 1 步：装（三步）
 
 ```bash
-# ⓪ ★ 前提 2：profile 必须是【完整的】—— 这一步最容易漏，漏了会报一句看不懂的错
+# ⓪ ★ 前提 1：profile 必须是【完整的】—— 这一步最容易漏，漏了会报一句看不懂的错
 #    ⚠️ 裸 profile 会停在：Error: dsh: 1 entry did not activate
 #                          @dsh-external/dsh-org-panel: pending (waiting for service: webServer)
 #    ⇒ ★ 那是**缺 `@deepseek-ai/dsh-web-app`**（它提供 `webServer` 服务），**不是插件坏了**。
@@ -34,9 +34,13 @@ dsh --profile myco --from-default-profile web
 #      · 模板名是 **`web`**（DSH 官方帮助里只有这一个：`create rescue from the shipped web template`）
 #    ⚠️ **别写 `--profile web`**（那是"启动已有的 web"）· **别写 `--from-default-profile default`**（没有这个模板）
 
-# ① 装插件本体（让底座认识这个插件）
+# ① 先把它拿到手（clone 到任意目录）
+git clone https://github.com/yjh051108/dsh-teamkit
+#    ⇒ 下一步里的 `<你 clone 的>` 就是这一步的落点
+
+# ② 装插件本体（让底座认识这个插件）
 #    ⚠️ 前提：pnpm 必须在 PATH 上（dsh plugin 会把参数转发给 pnpm）
-dsh plugin --profile myco add "<你 clone 下来的>/plugin"     # ★ 绝对路径，不带 file:
+dsh plugin --profile myco add "<你 clone 的>/plugin"     # ★ 绝对路径，不带 file:
 #    ★ `myco` = 你在 ⓪ 建的那个 profile 名（**下面每一步都用同一个名字**）
 
 # ② 装"资产" —— 插件只是机制，开公司还需要数据（方法包 / 角色档 / 预设）
